@@ -30,7 +30,7 @@ export const getTestData = async (key: string): Promise<TestData> => {
 export const createTestData = async () => {
   await setDoc(doc(db, "tests", "Just a test"), {
     title: "Test Title",
-    desciption: "Test Description",
+    description: "Test Description",
   });
   console.log("你又按到了啦");
 };

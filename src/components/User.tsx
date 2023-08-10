@@ -8,7 +8,7 @@ const User = ({ user }: any) => {
       {user && (
         <div>
           <div>{user.displayName}</div>
-          <div>{user.email}</div>
+          <div>{user.token}</div>
           {user.photoURL && (
             <Image
               src={user.photoURL}
