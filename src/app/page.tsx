@@ -1,37 +1,35 @@
 "use client";
-import Image from "next/image";
-import { useAuthState } from "react-firebase-hooks/auth";
-// import { useCollection } from "react-firebase-hooks/firestore";
+import React, { useEffect } from "react";
 
-import SignIn from "../components/SignIn";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "@/service/firebase";
+
 import SignOut from "@/components/SignOut";
-import { auth } from "../service/firebase";
+import TestData from "@/components/TestData";
+import User from "@/components/User";
+import { createTestData } from "@/repo/RecordRepo";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
-  // Firestore
-  // const db = firebase.firestore();
+  const [user] = useAuthState(auth);
+  const router = useRouter();
 
-  // User Authentication
-  const [user, loading, error] = useAuthState(auth);
+  useEffect(() => {
+    if (!user) {
+      router.push("/signin");
+    }
+  }, [router, user]);
 
   return (
     <>
-      {!user && <SignIn />}
-      {user && (
+      <User user={user} />
+      {
         <>
-          <div>{user.displayName}</div>
-          <div>{user.email}</div>
-          {user.photoURL && (
-            <Image
-              src={user.photoURL}
-              width={100}
-              height={100}
-              alt="Picture of the author"
-            />
-          )}
+          <TestData />
+          <button onClick={createTestData}>Create test data</button>
           <SignOut />
         </>
-      )}
+      }
     </>
   );
 }
