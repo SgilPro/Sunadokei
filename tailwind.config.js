@@ -12,6 +12,13 @@ module.exports = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+      colors: {
+        "sd-orange-1": "#FAE6D8",
+        "sd-orange-4": "#E8833A",
+        "sd-yellow-3": "#FABC2C",
+        "sd-brown-5": "#8B4937",
+        "sd-brown-7": "#653423",
+      },
     },
     fontFamily: {
       display: "var(--display-font)",

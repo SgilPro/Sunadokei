@@ -1,8 +1,28 @@
-import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { AuthProvider, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth } from "./firebase";
-const provider = new GoogleAuthProvider();
 
-export const signIn = () => {
+export enum LoginType {
+  GOOGLE = "Google",
+  FACEBOOK = "Facebook",
+  TWITTER = "Twitter",
+  EMAIL = "Email",
+}
+
+const getProvider = (providerType: LoginType): AuthProvider | null => {
+  switch (providerType) {
+    case LoginType.GOOGLE:
+      return new GoogleAuthProvider();
+    case LoginType.FACEBOOK:
+    case LoginType.TWITTER:
+    case LoginType.EMAIL:
+    default:
+      return null;
+  }
+};
+
+export const signIn = (providerType: LoginType) => {
+  const provider = getProvider(providerType);
+  if (!provider) return;
   signInWithPopup(auth, provider)
     .then((result) => {
       // This gives you a Google Access Token. You can use it to access the Google API.

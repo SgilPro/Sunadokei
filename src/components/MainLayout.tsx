@@ -7,7 +7,7 @@ export default function MainLayout({
 }) {
   return (
     <div className="flex justify-center">
-      <div className="w-[480px] sm:w-full bg-orange-300 h-screen p-10">
+      <div className="w-[480px] sm:w-full bg-sd-orange-1 text-sd-orange-4 h-screen p-10">
         {children}
       </div>
     </div>
