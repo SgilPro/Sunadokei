@@ -1,4 +1,4 @@
-import Record from "@/models/Record";
+import Record from "@/model/Record";
 import { db } from "../service/firebase";
 import { doc, getDoc, setDoc } from "firebase/firestore";
 // const converter = {
@@ -10,7 +10,7 @@ import { doc, getDoc, setDoc } from "firebase/firestore";
 export const createRecord = async () => {
   await setDoc(
     doc(db, "records", "做ImIn"),
-    new Record("做ImIn Wireframe", "", [], 5760, new Date())
+    new Record("做ImIn Wireframe", "", [], 5760, new Date()),
   );
 };
 
