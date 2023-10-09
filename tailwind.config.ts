@@ -1,5 +1,5 @@
-/** @type {import('tailwindcss').Config} */
-module.exports = {
+import { Config } from "tailwindcss";
+export default {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -14,7 +14,9 @@ module.exports = {
       },
       colors: {
         "sd-orange-1": "#FAE6D8",
+        "sd-orange-2": "#F6CA9C",
         "sd-orange-4": "#E8833A",
+        "sd-yellow-1": "#FDF3D3",
         "sd-yellow-3": "#FABC2C",
         "sd-brown-5": "#8B4937",
         "sd-brown-7": "#653423",
@@ -37,4 +39,4 @@ module.exports = {
     },
   },
   plugins: [],
-};
+} satisfies Config;

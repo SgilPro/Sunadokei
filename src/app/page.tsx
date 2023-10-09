@@ -9,6 +9,8 @@ import TestData from "@/components/TestData";
 import User from "@/components/User";
 import { createTestData } from "@/repo/RecordRepo";
 import { useRouter } from "next/navigation";
+import MainLayout from "@/components/MainLayout";
+import NavBar from "@/components/NavBar";
 
 export default function Home() {
   const [user] = useAuthState(auth);
@@ -21,7 +23,7 @@ export default function Home() {
   }, [router, user]);
 
   return (
-    <>
+    <MainLayout>
       <User user={user} />
       {
         <>
@@ -30,6 +32,6 @@ export default function Home() {
           <SignOut />
         </>
       }
-    </>
+    </MainLayout>
   );
 }
