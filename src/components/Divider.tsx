@@ -15,6 +15,6 @@ const getDivider = (text: string) => {
   }
 };
 
-export default function Divider({ text }: { text: string }) {
+export default function Divider({ text = "" }: { text?: string }) {
   return <div className="flex gap-2 items-center">{getDivider(text)}</div>;
 }

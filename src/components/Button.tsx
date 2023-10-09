@@ -23,12 +23,12 @@ const getClasses = (type: ButtonType, color: string) => {
 
 export default function Button({
   children,
-  onClick,
+  onClick = () => {},
   type = ButtonType.SOLID,
   color = "sd-orange-4",
 }: {
   children: React.ReactNode;
-  onClick: () => void;
+  onClick?: () => void;
   type?: ButtonType;
   color?: string;
 }) {
