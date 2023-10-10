@@ -7,7 +7,7 @@ export const enum ButtonType {
 }
 
 const basicClasses =
-  "flex justify-center items-center gap-2 border-2 font-medium py-1 px-2 rounded";
+  "flex justify-center items-center gap-2 border-2 font-medium py-1 px-2 rounded h-10";
 
 const getClasses = (type: ButtonType, color: string) => {
   switch (type) {

@@ -8,7 +8,8 @@ export const enum FormItemType {
   BUTTON = "button",
 }
 
-const basicClasses = "rounded border-sd-orange-4";
+const basicClasses =
+  "rounded border-2 border-sd-orange-3 hover:border-sd-orange-4 focus:outline-none focus-visible:border-sd-orange-4 px-2";
 
 const getFormItem = (type: FormItemType, width?: number, label?: string) => {
   let classes: string = basicClasses;
@@ -19,13 +20,18 @@ const getFormItem = (type: FormItemType, width?: number, label?: string) => {
   }
   switch (type) {
     case FormItemType.INPUT:
+      classes += " h-10";
       return <input className={classes} />;
     case FormItemType.TEXTAREA:
+      classes += " h-[72px] pt-1 resize-none";
       return <textarea className={classes} />;
     case FormItemType.SELECT:
+      classes += " h-10";
       return <select className={classes} />;
     case FormItemType.BUTTON:
-      return <Button type={ButtonType.SOLID}>{label}</Button>;
+      classes =
+        "flex justify-center items-center gap-2 border-2 font-medium py-1 px-2 rounded bg-sd-orange-4 border-sd-orange-4 text-white w-full h-10";
+      return <button className={classes}>{label}</button>;
     default:
       return <div>{label}</div>;
   }
@@ -35,14 +41,16 @@ export default function FormItem({
   label,
   type,
   width,
+  additionalClasses,
 }: {
   label: string;
   type: FormItemType;
   width?: number;
+  additionalClasses?: string;
 }) {
   return (
-    <div className="mb-2">
-      {<div className="h-6">{type === FormItemType.BUTTON ? "" : label}</div>}
+    <div className={additionalClasses}>
+      {<div className="h-6 font-bold">{type === FormItemType.BUTTON ? "" : label}</div>}
       {getFormItem(type, width, label)}
     </div>
   );
